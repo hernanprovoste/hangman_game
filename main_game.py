@@ -14,7 +14,7 @@ print(placeholder)
 # We create a loop to let the user guess again.
 game_over = False
 correct_letters = []
-lifes = 5
+lives = 5
 
 stages = [
         """
@@ -98,6 +98,16 @@ while not game_over:
 
     print(display)
 
+    # Delete lives when the word is not correct
+    if guess not in chosen_word:
+        lives -= 1
+        if lives == 0:
+            game_over = True
+            print("You lose")
+
     if "_" not in display:
         game_over = True
         print("You win")
+
+    # Print the ASCII character to describe the lives :D
+    print(stages[lives])
